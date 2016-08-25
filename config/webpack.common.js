@@ -94,11 +94,11 @@ module.exports = {
     new HtmlElementsPlugin({
       headTags: require('./head-config.common')
     }),
-    new ExtractTextPlugin('[name].css'),
-    new DefinePlugin({
-      API_HOST: JSON.stringify('https://localhost:'),
-      API_PORT: JSON.stringify(process.env.PORT)
-    })
+    new ExtractTextPlugin('[name].css')
+    // new DefinePlugin({
+    //   API_HOST: JSON.stringify('https://localhost:'),
+    //   API_PORT: JSON.stringify(process.env.PORT)
+    // })
   ],
 
   node: {

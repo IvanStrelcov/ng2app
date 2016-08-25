@@ -63,8 +63,8 @@ module.exports = webpackMerge(commonConfig, {
         'NODE_ENV': JSON.stringify(METADATA.ENV),
         'HMR': METADATA.HMR,
       },
-      // 'host': JSON.stringify(METADATA.host),
-      // 'port': JSON.stringify(METADATA.port)
+      'API_HOST': JSON.stringify(METADATA.host),
+      'API_PORT': JSON.stringify(METADATA.port)
     }),
 
     /**
