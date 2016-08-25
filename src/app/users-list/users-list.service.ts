@@ -5,11 +5,11 @@ import { Http, Response } from '@angular/http';
 export class UsersListService {
   constructor(private http: Http){}
   getUsers() {
-    return this.http.get(`http://localhost:${API_URL}/api/users`)
+    return this.http.get(`${URL}${PORT}/api/users`)
                     .map(user => user.json());
   }
   getUsersByName(name) {
-    return this.http.get(`http://localhost:${API_URL}api/users?name=${name}`)
+    return this.http.get(`${URL}${PORT}api/users?name=${name}`)
                     .map(user => user.json());
   }
 }

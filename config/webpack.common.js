@@ -94,10 +94,11 @@ module.exports = {
       headTags: require('./head-config.common')
     }),
     new ExtractTextPlugin('[name].css'),
-  ],
     new webpack.DefinePlugin({
-      API_URL: JSON.stringify(process.env.PORT)
-    }),
+      URL: JSON.stringify('https://localhost:'),
+      PORT: process.env.PORT
+    })
+  ],
 
   node: {
     global: 'window',
