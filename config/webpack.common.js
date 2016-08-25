@@ -96,7 +96,7 @@ module.exports = {
     new ExtractTextPlugin('[name].css'),
     new webpack.DefinePlugin({
       URL: JSON.stringify('https://localhost:'),
-      PORT: process.env.PORT
+      PORT: JSON.stringify(process.env.PORT)
     })
   ],
 
