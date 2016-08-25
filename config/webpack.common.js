@@ -95,6 +95,9 @@ module.exports = {
     }),
     new ExtractTextPlugin('[name].css'),
   ],
+    new webpack.DefinePlugin({
+      API_URL: JSON.stringify(process.env.PORT)
+    }),
 
   node: {
     global: 'window',
