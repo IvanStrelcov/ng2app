@@ -1,23 +1,14 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { HeaderComponent } from './header';
+import { UsersListComponent } from './users-list';
 
 @Component({
   selector: 'app',
-  encapsulation: ViewEncapsulation.None,
-  styleUrls: [
-    './app.style.css',
-    `.app { background: #d6c7c7;}`
-  ],
-  template: `<div class="app">
-                <h1>First state</h1>
-                  <div>
-                    <router-outlet></router-outlet>
-                  </div>
-                <h2>Router outlet ^</h2>
-             </div>`
+  template: require('./app.html')
 })
-export class App {
 
-  constructor() {}
-
-  ngOnInit() {}
+export class App implements OnInit {
+  constructor(){}
+  ngOnInit(){}
 }

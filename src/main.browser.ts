@@ -1,3 +1,7 @@
+import 'bootstrap/less/bootstrap.less';
+import 'animate.css/animate.css';
+import './assets/css/style.css';
+
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 

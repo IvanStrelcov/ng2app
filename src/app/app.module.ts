@@ -4,8 +4,13 @@ import { HttpModule }          from '@angular/http';
 import { RouterModule }        from '@angular/router';
 
 import { App }        from './app.component';
+import { HeaderComponent }     from './header/header.component';
 
-import { MainModule } from './main';
+import { UserListModule }      from './users-list';
+import { UserCreateModule }    from './user-create';
+import { UserProfileModule }   from './user-profile';
+
+import { SharedModule }   from './shared/shared.module';
 
 import { routes,
          routing,
@@ -13,11 +18,14 @@ import { routes,
 
 @NgModule({
   imports: [      BrowserModule,
-                  MainModule,
+                  UserListModule,
                   HttpModule,
+                  UserCreateModule,
+                  UserProfileModule,
                   routing,
-                  ],
-  declarations: [ App ],
+                  SharedModule.forRoot()],
+  declarations: [ App,
+                  HeaderComponent],
   providers: [ appRoutingProviders ],
   bootstrap: [ App ]
 })

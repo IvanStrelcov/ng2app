@@ -5,6 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const HtmlElementsPlugin = require('./html-elements-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const METADATA = {
   title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
@@ -53,7 +54,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loaders: ['to-string-loader', 'css-loader']
+        loader: ExtractTextPlugin.extract('style', 'css')
+      },
+      {
+        test: /\.less$/,
+        loader: ExtractTextPlugin.extract('style', 'css!less?sourceMap')
       },
       {
         test: /\.html$/,
@@ -62,6 +67,10 @@ module.exports = {
       },
       {
         test: /\.(jpg|png|gif)$/,
+        loader: 'file'
+      },
+      {
+        test: /\.(ttf|eot|svg|woff2?)(.*)?$/,
         loader: 'file'
       }
     ]
@@ -84,6 +93,7 @@ module.exports = {
     new HtmlElementsPlugin({
       headTags: require('./head-config.common')
     }),
+    new ExtractTextPlugin('[name].css'),
   ],
 
   node: {
