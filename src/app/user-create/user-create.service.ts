@@ -6,7 +6,7 @@ export class UserCreateService {
   constructor(private http: Http){}
 
   addUser(user: User) {
-    return this.http.post(`${host}${port}/api/users/`, user)
+    return this.http.post(`${API_HOST}${API_PORT}/api/users/`, user)
                     .map(user => user.json());
   }
 }

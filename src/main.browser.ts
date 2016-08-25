@@ -25,7 +25,6 @@ export function main(initialHmrState?: any): Promise<any> {
   ])
   .then(decorateComponentRef)
   .catch(err => console.error(err));
-
 }
 
 if ('development' === ENV && HMR === true) {

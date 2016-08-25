@@ -6,9 +6,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const HtmlElementsPlugin = require('./html-elements-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const DefinePlugin = require('webpack/lib/DefinePlugin');
 
 const METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
+  title: 'Users List',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
 };
@@ -94,10 +95,10 @@ module.exports = {
       headTags: require('./head-config.common')
     }),
     new ExtractTextPlugin('[name].css')
-    // new webpack.DefinePlugin({
-    //   URL: JSON.stringify('https://localhost:'),
-    //   PORT: JSON.stringify(process.env.PORT)
-    // })
+    new DefinePlugin({
+      API_HOST: JSON.stringify('https://localhost:'),
+      API_PORT: JSON.stringify(process.env.PORT)
+    })
   ],
 
   node: {
