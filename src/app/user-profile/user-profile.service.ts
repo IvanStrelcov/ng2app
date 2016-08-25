@@ -6,12 +6,12 @@ export class UserProfileService {
   constructor(private http: Http){}
 
   getUser(id) {
-    return this.http.get(`${URL}${PORT}api//users/${id}`)
+    return this.http.get(`${host}${port}/api/users/${id}`)
                     .map(user => user.json());
   }
 
   removeUser(id) {
-    return this.http.delete(`${URL}${PORT}api//users/${id}`)
+    return this.http.delete(`${host}${port}/api/users/${id}`)
                     .map(res => res.json());
   }
 }

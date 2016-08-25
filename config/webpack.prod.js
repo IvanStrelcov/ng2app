@@ -32,95 +32,28 @@ const METADATA = webpackMerge(commonConfig.metadata, {
 
 module.exports = webpackMerge(commonConfig, {
 
-  /**
-   * Switch loaders to debug mode.
-   *
-   * See: http://webpack.github.io/docs/configuration.html#debug
-   */
   debug: false,
 
-  /**
-   * Developer tool to enhance debugging
-   *
-   * See: http://webpack.github.io/docs/configuration.html#devtool
-   * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
-   */
   devtool: 'source-map',
 
-  /**
-   * Options affecting the output of the compilation.
-   *
-   * See: http://webpack.github.io/docs/configuration.html#output
-   */
   output: {
 
-    /**
-     * The output directory as absolute path (required).
-     *
-     * See: http://webpack.github.io/docs/configuration.html#output-path
-     */
     path: helpers.root('dist'),
 
-    /**
-     * Specifies the name of each output file on disk.
-     * IMPORTANT: You must not specify an absolute path here!
-     *
-     * See: http://webpack.github.io/docs/configuration.html#output-filename
-     */
     filename: '[name].[chunkhash].bundle.js',
 
-    /**
-     * The filename of the SourceMaps for the JavaScript files.
-     * They are inside the output.path directory.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#output-sourcemapfilename
-     */
     sourceMapFilename: '[name].[chunkhash].bundle.map',
 
-    /**
-     * The filename of non-entry chunks as relative path
-     * inside the output.path directory.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
-     */
     chunkFilename: '[id].[chunkhash].chunk.js'
 
   },
 
-  /**
-   * Add additional plugins to the compiler.
-   *
-   * See: http://webpack.github.io/docs/configuration.html#plugins
-   */
   plugins: [
 
-    /**
-     * Plugin: WebpackMd5Hash
-     * Description: Plugin to replace a standard webpack chunkhash with md5.
-     *
-     * See: https://www.npmjs.com/package/webpack-md5-hash
-     */
     new WebpackMd5Hash(),
 
-    /**
-     * Plugin: DedupePlugin
-     * Description: Prevents the inclusion of duplicate code into your bundle
-     * and instead applies a copy of the function at runtime.
-     *
-     * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
-     * See: https://github.com/webpack/docs/wiki/optimization#deduplication
-     */
     new DedupePlugin(),
 
-    /**
-     * Plugin: DefinePlugin
-     * Description: Define free variables.
-     * Useful for having development builds with debug logging or adding global constants.
-     *
-     * Environment helpers
-     *
-     * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
-     */
     // NOTE: when adding more properties make sure you include them in custom-typings.d.ts
     new DefinePlugin({
       'ENV': JSON.stringify(METADATA.ENV),
@@ -129,7 +62,9 @@ module.exports = webpackMerge(commonConfig, {
         'ENV': JSON.stringify(METADATA.ENV),
         'NODE_ENV': JSON.stringify(METADATA.ENV),
         'HMR': METADATA.HMR,
-      }
+      },
+      'host': JSON.stringify(METADATA.host),
+      'port': JSON.stringify(METADATA.port)
     }),
 
     /**

@@ -93,11 +93,11 @@ module.exports = {
     new HtmlElementsPlugin({
       headTags: require('./head-config.common')
     }),
-    new ExtractTextPlugin('[name].css'),
-    new webpack.DefinePlugin({
-      URL: JSON.stringify('https://localhost:'),
-      PORT: JSON.stringify(process.env.PORT)
-    })
+    new ExtractTextPlugin('[name].css')
+    // new webpack.DefinePlugin({
+    //   URL: JSON.stringify('https://localhost:'),
+    //   PORT: JSON.stringify(process.env.PORT)
+    // })
   ],
 
   node: {
